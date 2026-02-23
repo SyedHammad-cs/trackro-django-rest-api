@@ -5,7 +5,8 @@ from .serializers import ProjectSerializer, TaskSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()   # ADD THIS LINE
+    queryset = Project.objects.all()   # querset error solved due to this
+    queryset = Project.objects.all()   # querset error solved due to this
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticated]
 
@@ -17,6 +18,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
 
 
 class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()   # querset error solved due to this
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
 
