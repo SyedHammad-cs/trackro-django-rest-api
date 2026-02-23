@@ -1,15 +1,19 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from .models import Project, Task
 from .serializers import ProjectSerializer, TaskSerializer
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all()   # ADD THIS LINE
     serializer_class = ProjectSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Project.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class TaskViewSet(viewsets.ModelViewSet):
