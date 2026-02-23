@@ -71,7 +71,7 @@ User → Project → Task
 ## Installation
 
 1. Clone repository
-`git clone `
+`git clone https://github.com/SyedHammad-cs/trackro-django-rest-api.git`
 
 2. Navigate to project
 `cd trackro`
